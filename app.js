@@ -21,21 +21,11 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 app.use(
-  session({
-    secret: "secret",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
-
-app.use(
   cors({
-    origin: ["https://ecommerce50665.web.app", "http://localhost:3001"], // Add both production and local URLs
+    origin: "https://ecommerce50665.web.app/products", // Add both production and local URLs
     credentials: true,
   })
 );
-
-
 
 app.use("/uploads/images", express.static(path.join("uploads", "images")));
 
