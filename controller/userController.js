@@ -85,7 +85,7 @@ async function sendOTP(req, res, next) {
     }
 
     await client.messages.create({
-      body: `Your OTP is: ${otp}`,
+      body: `Trendify: Your OTP is: ${otp}`,
       from: process.env.TWILIO_PHONE_NUMBER,
       to: `+91${phoneNumber}`,
     });
