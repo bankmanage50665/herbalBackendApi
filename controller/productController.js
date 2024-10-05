@@ -15,7 +15,6 @@ async function createProduct(req, res, next) {
 
   const { name, description, brand, category, price, creator } = req.body;
 
-
   const createdProduct = new Product({
     name,
     description,
@@ -77,7 +76,10 @@ async function productDetail(req, res, next) {
   if (!findProduct) {
     return next(new HttpError("Product not found", 404));
   }
-  res.json({ message: "Find product sucessfully.", findProduct });
+  res.json({
+    message: "Find product sucessfully.",
+    findProduct: findProduct.toObject({ getters: true }),
+  });
 }
 
 async function editProducts(req, res, next) {

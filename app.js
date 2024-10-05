@@ -14,6 +14,7 @@ const HttpError = require("./utils/errorModal");
 const productRoutes = require("./routes/products/products_routes");
 const orderRouter = require("./routes/user/order_routes");
 const adminRouter = require("./routes/user/admin_routes");
+const reviewRouter = require("./routes/products/review_routes");
 
 const url = `mongodb+srv://${process.env.DB_USER_NAME}:${process.env.DB_USER_PASSWORD}@cluster0.wdrbduw.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`;
 
@@ -22,8 +23,8 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://ecommerce50665.web.app", // Add both production and local URLs
-    // origin: "http://localhost:3001", // Add both production and local URLs
+    // origin: "https://ecommerce50665.web.app", // Add both production and local URLs
+    origin: "http://localhost:3001", // Add both production and local URLs
     credentials: true,
   })
 );
@@ -34,6 +35,7 @@ app.use("/users", userRouter);
 app.use("/products", productRoutes);
 app.use("/orders", orderRouter);
 app.use("/admin", adminRouter);
+app.use("/review", reviewRouter);
 
 app.use((req, res, next) => {
   const error = new HttpError("Could not find this route", 404);

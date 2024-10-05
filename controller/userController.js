@@ -17,7 +17,7 @@ async function register(req, res, next) {
     return next(new HttpError("Invalid user credentials", 401));
   }
 
-  const { phoneNumber, name } = req.body;
+  const { phoneNumber } = req.body;
 
   let user;
   // Check if user already exists
