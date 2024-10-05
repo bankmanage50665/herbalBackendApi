@@ -19,7 +19,7 @@ async function register(req, res, next) {
 
   const { phoneNumber } = req.body;
 
-  console.log(phoneNumber)
+
 
   let user;
   // Check if user already exists
@@ -91,6 +91,8 @@ async function sendOTP(req, res, next) {
       from: process.env.TWILIO_PHONE_NUMBER,
       to: `+91${phoneNumber}`,
     });
+
+    console.log(otp)
 
     res.status(200).json({ message: "OTP sent successfully", otp });
   } catch (err) {
