@@ -23,8 +23,8 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://ecommerce50665.web.app", // Add both production and local URLs
-    // origin: "http://localhost:3001", // Add both production and local URLs
+    // origin: "https://ecommerce50665.web.app", // Add both production and local URLs
+    origin: "http://localhost:3001", // Add both production and local URLs
     credentials: true,
   })
 );

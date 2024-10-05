@@ -19,6 +19,8 @@ async function register(req, res, next) {
 
   const { phoneNumber } = req.body;
 
+  console.log(phoneNumber)
+
   let user;
   // Check if user already exists
   try {
@@ -34,7 +36,7 @@ async function register(req, res, next) {
   }
 
   // Create new user
-  user = new User({ phoneNumber, name, orders: [], products: [] });
+  user = new User({ phoneNumber,  orders: [], products: [] });
 
   try {
     await user.save();
