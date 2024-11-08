@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -7,7 +6,8 @@ const path = require("path");
 
 const cors = require("cors");
 const fs = require("fs");
-const session = require("express-session");
+const dotenv = require("dotenv");
+require("dotenv").config();
 
 const userRouter = require("./routes/user/user_routes");
 const HttpError = require("./utils/errorModal");
@@ -23,8 +23,8 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://ecommerce50665.web.app", // Add both production and local URLs
-    // origin: "http://localhost:3001", // Add both production and local URLs
+    // origin: "https://ecommerce50665.web.app", // Add both production and local URLs
+    origin: "http://localhost:3001", // Add both production and local URLs
     credentials: true,
   })
 );

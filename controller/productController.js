@@ -9,11 +9,13 @@ const { validationResult } = require("express-validator");
 async function createProduct(req, res, next) {
   const err = validationResult(req);
 
-  if (!err.isEmpty) {
-    return next(new HttpError("Invalid inputs creditentials", 422));
-  }
+  // if (!err.isEmpty) {
+  //   return next(new HttpError("Invalid inputs creditentials", 422));
+  // }
 
   const { name, description, brand, category, price, creator } = req.body;
+
+console.log(name, description)
 
   const createdProduct = new Product({
     name,
