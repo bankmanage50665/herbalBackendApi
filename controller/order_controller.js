@@ -5,13 +5,11 @@ const HttpError = require("../utils/errorModal");
 const User = require("../modal/user_modal");
 
 async function placeOrder(req, res, next) {
-  const { user, items, totalQuantity, totalPrice } = req.body;
+  const { user, items, totalQuantity, totalPrice, size } = req.body;
 
   let currentDate = new Date();
   currentDate.setDate(currentDate.getDate() + 3);
   let deliveryDate = currentDate.toLocaleDateString("en-GB");
-
- 
 
   const createdOrder = new Order({
     user,
@@ -19,6 +17,7 @@ async function placeOrder(req, res, next) {
     creator: req.userData.userId,
     totalQuantity,
     totalPrice,
+    size,
 
     deliveredWillBe: deliveryDate,
     paymentStatus: "Unpaid",
@@ -77,8 +76,6 @@ async function userOrderByUserId(req, res, next) {
       new HttpError("Field to find user orders, Please try again later", 500)
     );
   }
-
- 
 
   res.json({
     message: "Find user orders sucessfully.",
