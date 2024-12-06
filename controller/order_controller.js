@@ -5,11 +5,7 @@ const HttpError = require("../utils/errorModal");
 const User = require("../modal/user_modal");
 
 async function placeOrder(req, res, next) {
-  const { user, items, totalQuantity, totalPrice } = req.body;
-
-
-  console.log(req.body)
-
+  const { user, items, totalQuantity, totalPrice, size } = req.body;
 
   let currentDate = new Date();
   currentDate.setDate(currentDate.getDate() + 3);
@@ -21,12 +17,15 @@ async function placeOrder(req, res, next) {
     creator: req.userData.userId,
     totalQuantity,
     totalPrice,
-    // size,
 
     deliveredWillBe: deliveryDate,
     paymentStatus: "Unpaid",
     orderStatus: "Dispatch",
   });
+
+
+
+  console.log(size)
 
   let findUser;
   try {
@@ -59,6 +58,9 @@ async function placeOrder(req, res, next) {
 
 async function getOrders(req, res, next) {
   const orders = await Order.find();
+
+  console.log(orders)
+
   res.json({
     message: "Find orders sucessfully.",
     orders: orders.map((orders) => orders.toObject({ getters: true })),
@@ -81,6 +83,7 @@ async function userOrderByUserId(req, res, next) {
     );
   }
 
+  console.log(findOrderByUserId);
   res.json({
     message: "Find user orders sucessfully.",
     orders: findOrderByUserId.toObject({ getters: true }),

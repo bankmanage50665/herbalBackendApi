@@ -87,11 +87,11 @@ async function sendOTP(req, res, next) {
 
     // Wrap Twilio API call in try-catch for better error handling
     try {
-      // await client.messages.create({
-      //   body: `Trendify: Your OTP is: ${otp}`,
-      //   from: process.env.TWILIO_PHONE_NUMBER,
-      //   to: `+91${phoneNumber}`,
-      // });
+      await client.messages.create({
+        body: `Trendify: Your OTP is: ${otp}`,
+        from: process.env.TWILIO_PHONE_NUMBER,
+        to: `+91${phoneNumber}`,
+      });
     } catch (twilioError) {
       console.error("Twilio Error:", twilioError);
       return next(
