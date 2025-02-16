@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(
   cors({
     // origin: "https://ecommerce50665.web.app", // Add both production and local URLs
-    origin: "http://localhost:3001", // Add both production and local URLs
+    origin: "http://localhost:3000", // Add both production and local URLs
     credentials: true,
   })
 );
@@ -56,7 +56,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 mongoose
   .connect(url)

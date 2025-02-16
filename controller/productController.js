@@ -13,17 +13,27 @@ async function createProduct(req, res, next) {
   //   return next(new HttpError("Invalid inputs creditentials", 422));
   // }
 
-  const { name, description, brand, category, price, creator, size } = req.body;
+  const {
+    name,
+    description,
+    brand,
+    price,
+    creator,
+    productType,
+    productWeight,
+  } = req.body;
+
+ 
 
   const createdProduct = new Product({
     name,
     description,
     image: req.files.map((file) => file.path),
     brand,
-    category,
     price,
     creator,
-    size,
+    productType,
+    productWeight,
   });
 
   let findProductCreatorUser;
